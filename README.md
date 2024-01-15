@@ -1,4 +1,4 @@
-In this repository you will find the totality of the work I did during my data science internship at Stats perform. I was give several large CSV files
+In this repository you will find the totality of the work I did during my data science internship at Stats perform. I was given several large CSV files
 containing the SportVU optical tracking system's quality. The goal of my internship was to analyse this data in order to create a predictive model to try a predict 
 the SportVu's quality. I proceeded in the following order:
 
