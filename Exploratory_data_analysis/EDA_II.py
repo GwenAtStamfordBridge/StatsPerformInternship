@@ -48,58 +48,8 @@ df['NEW_DELTA']=df['REPORT DELIVERY TO CLIENT FULL(CET)']-df['END OF GAME TIME F
 df['CONFIRMATIONS']=df['CONFIRMATIONS'].astype('int64')
 
 df.info()
-# <class 'pandas.core.frame.DataFrame'>
-# RangeIndex: 1199 entries, 0 to 1198
-# Data columns (total 32 columns):
-#  #   Column                               Non-Null Count  Dtype
-# ---  ------                               --------------  -----
-#  0   DATE                                 1199 non-null   int64
-#  1   REPORT DELIVERY DATE                 1199 non-null   object
-#  2   MONTH                                1199 non-null   int64
-#  3   HOUR                                 1199 non-null   object
-#  4   FULL DATE                            1199 non-null   datetime64[ns]
-#  5   CITY - VENUE                         1199 non-null   object
-#  6   HOME                                 1199 non-null   object
-#  7   AWAY                                 1199 non-null   object
-#  8   COMPETITION                          1199 non-null   object
-#  9   ROUND                                1198 non-null   object
-#  10  SYSTEM TYPE                          1199 non-null   object
-#  11  SYSTEM N°                            1197 non-null   object
-#  12  OPERATOR                             1199 non-null   object
-#  13  STABILIZATION RESS. NEEDS            1146 non-null   object
-#  14  WEATHER CONDITIONS                   1199 non-null   object
-#  15  STADIUM CONDITIONS                   1199 non-null   object
-#  16  INTERNET CONDITIONS                  1195 non-null   object
-#  17  ISSUE TYPE                           1198 non-null   object
-#  18  LIVE TRACKING ISSUE TYPE             1189 non-null   object
-#  19  POST  ISSUE TYPE                     1101 non-null   object
-#  20  DELTA END OF GAME/CLIENT DELIVERY    1195 non-null   object
-#  21  COMPLETENESS(%)                      1199 non-null   float64
-#  22  LIVE SCOUT TIME (S)                  1185 non-null   float64
-#  23  LIVE SCOUTS COUNT                    1189 non-null   float64
-#  24  LIVE CONFIRMATIONS (%)               1188 non-null   float64
-#  25  TGV AUTO TRAJ COUNTS                 1062 non-null   float64
-#  26  CONFIRMATIONS                        1151 non-null   object
-#  27  END OF GAME TIME (CET)               1199 non-null   object
-#  28  END OF GAME TIME FULL                1199 non-null   datetime64[ns]
-#  29  REPORT DELIVERY TO CLIENT (CET)      1162 non-null   object
-#  30  REPORT DELIVERY TO CLIENT FULL(CET)  1199 non-null   datetime64[ns]
-#  31  NEW_DELTA                            1199 non-null   timedelta64[ns]
-# dtypes: datetime64[ns](3), float64(5), int64(2), object(21), timedelta64[ns](1)
-# memory usage: 299.9+ KB
 
 df.describe()
-#               DATE  ...                  NEW_DELTA
-# count  1199.000000  ...                       1199
-# mean     15.768140  ...  0 days 17:18:44.737281067
-# std       8.454609  ...  0 days 04:54:47.515764895
-# min       1.000000  ...            0 days 01:10:00
-# 25%       8.000000  ...            0 days 14:53:30
-# 50%      16.000000  ...            0 days 18:04:00
-# 75%      22.000000  ...            0 days 20:31:00
-# max      31.000000  ...            1 days 07:02:00
-# [8 rows x 8 columns]
-
 
 #Examining numerical features
 numeric_features = df.select_dtypes(include=[np.number])
@@ -112,14 +62,6 @@ numeric_features.columns
 #Examining categorical features
 categorical_features = df.select_dtypes(include=[np.object])
 categorical_features.columns
-# Index(['REPORT DELIVERY DATE', 'HOUR', 'CITY - VENUE', 'HOME', 'AWAY',
-#        'COMPETITION', 'ROUND', 'SYSTEM TYPE', 'SYSTEM N°', 'OPERATOR',
-#        'STABILIZATION RESS. NEEDS', 'WEATHER CONDITIONS', 'STADIUM CONDITIONS',
-#        'INTERNET CONDITIONS', 'ISSUE TYPE', 'LIVE TRACKING ISSUE TYPE',
-#        'POST  ISSUE TYPE', 'DELTA END OF GAME/CLIENT DELIVERY',
-#        'CONFIRMATIONS', 'END OF GAME TIME (CET)',
-#        'REPORT DELIVERY TO CLIENT (CET)'],
-#       dtype='object')
 
 #Visualising missing values for a sample of 250
 msno.matrix(df.sample(250))
@@ -140,36 +82,12 @@ msno.dendrogram(df)
 
 #Skewness and kurtosis
 df.skew()
-# COMPLETENESS(%)          -3.153189
-# LIVE SCOUT TIME (S)       1.754807
-# LIVE SCOUTS COUNT         0.613201
-# LIVE CONFIRMATIONS (%)   -2.412783
-# TGV AUTO TRAJ COUNTS      2.755585
-# dtype: float64
 
 rdf.skew()
-# PLAYER/LINESMAN ID  ACCURACY (%)    -1.349128
-# PLAYER ONLY ID ACCURACY             -2.055505
-# LIVE SCOUTS COUNT                    0.611782
-# LIVE CONFIRMATIONS (%)              -2.413721
-# TGV AUTO TRAJ COUNTS                 2.748385
-# dtype: float64
 
 df.kurt()
-# COMPLETENESS(%)           13.280751
-# LIVE SCOUT TIME (S)        7.857440
-# LIVE SCOUTS COUNT          0.404366
-# LIVE CONFIRMATIONS (%)     9.111705
-# TGV AUTO TRAJ COUNTS      12.591303
-# dtype: float64
 
 rdf.kurt()
-# PLAYER/LINESMAN ID  ACCURACY (%)      3.388728
-# PLAYER ONLY ID ACCURACY               6.592900
-# LIVE SCOUTS COUNT                     0.403820
-# LIVE CONFIRMATIONS (%)                9.121618
-# TGV AUTO TRAJ COUNTS                 12.052650
-# dtype: float64
 
 #Now we will try to see the distribution of the data with seaborn
 y = df['COMPLETENESS(%)']
