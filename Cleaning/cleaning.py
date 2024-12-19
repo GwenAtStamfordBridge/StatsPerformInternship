@@ -79,41 +79,7 @@ low_comp[['DATE','COMPLETENESS(%)']].plot(kind='scatter',x='DATE',y='COMPLETENES
 #Categorical values check
 #Venues for example
 
-# df['CITY - VENUE'].value_counts()
-# Brugge - Jan BreidelStadion                     44
-# Nice - Allianz Riviera                          28
-# Monaco - Stade Louis II                         27
-# Anvers - Bosuilstadion                          24
-# Marseille - Stade Vélodrome                     24
-#                                                 ..
-# Wolfsburg - Volkswagen Arena                     1
-# Graz - Stadion Graz Liebenau                     1
-# Lyon - Stade de Balmont                          1
-# Saint-Ouen - Stade Bauer                         1
-# Haikou - Mission Hills football base Stadium     1
-# Name: CITY - VENUE, Length: 116, dtype: int64
-# pd.DataFrame(df['CITY - VENUE'].value_counts()).plot(kind='bar',figsize=(20,10))
-
 #Looking at the possible values for Weather conditions
-
-# Good            805
-# Sun/Shadow      279
-# OK               64
-# Sun/shadow       11
-# Fog/Mist         11
-# Smoke             7
-# Heavy rain        5
-# Fireworks         3
-# Fog               3
-# Mist/Fog          2
-# Snow              2
-# Raining           2
-# Light change      1
-# Heavy Fog         1
-# Heavy snow        1
-# Heavy fog         1
-# Rainy             1
-# Name: WEATHER CONDITIONS, dtype: int64
 
 #We will want to put rainy and raining together
 
@@ -133,18 +99,6 @@ low_comp[['DATE','COMPLETENESS(%)']].plot(kind='scatter',x='DATE',y='COMPLETENES
 #We will convert the column into a date with pandas method
 df['DATE']
 pd.to_datetime(df['DATE'])
-# 0      2021-07-17
-# 1      2021-07-17
-# 2      2021-07-17
-# 3      2021-07-23
-# 4      2021-07-24
-#           ...
-# 1194   2022-06-12
-# 1195   2022-06-12
-# 1196   2022-06-12
-# 1197   2022-06-13
-# 1198   2022-06-13
-# Name: DATE, Length: 1199, dtype: datetime64[ns]
 
 #OK
 
